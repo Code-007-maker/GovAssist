@@ -1,0 +1,132 @@
+/* Reset and base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #4A90E2, #50E3C2);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
+  width: 90%;
+}
+
+/* Header section */
+.header {
+  text-align: right;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.header a {
+  color: #ffcccc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header a:hover {
+  color: #ffffff;
+}
+
+/* Headings */
+h1, h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+/* Form elements */
+form label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #dcefff;
+}
+
+form input,
+form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #f1f9ff;
+  color: #333;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  box-shadow: 0 0 6px #50E3C2;
+}
+
+/* Button */
+button[type="submit"] {
+  width: 100%;
+  background-color: #ffffff;
+  color: #4A90E2;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e7bd1;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Scheme results */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #e6f6ff;
+  color: #222;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* No scheme message */
+p {
+  text-align: center;
+  font-size: 1rem;
+  color: #fceeed;
+  margin-top: 30px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.container, form, li {
+  animation: fadeInUp 0.6s ease;
+}

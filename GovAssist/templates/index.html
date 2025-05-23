@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard – GovAssist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+        label, select, input { display: block; margin-bottom: 15px; width: 100%; padding: 8px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        .header { text-align: right; margin-bottom: 20px; }
+        .header a { text-decoration: none; color: #f00; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 15px; background: #f0f0f0; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+        Welcome, {{ username }}! <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <h1>Discover government schemes tailored for you</h1>
+
+
+    <form method="post">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="120" required />
+
+        <label for="occupation">Occupation:</label>
+        <select id="occupation" name="occupation" required>
+            <option value="" disabled selected>Select</option>
+            <option value="student">Student</option>
+            <option value="farmer">Farmer</option>
+            <option value="unemployed">Unemployed</option>
+            <option value="worker">Worker</option>
+        </select>
+
+        <label for="income">Annual Income (INR):</label>
+        <input type="number" id="income" name="income" min="0" required />
+
+        <label for="education">Education Level:</label>
+        <select id="education" name="education" required>
+            <option value="" disabled selected>Select</option>
+            <option value="none">None</option>
+            <option value="school">School</option>
+            <option value="undergraduate">Undergraduate</option>
+            <option value="postgraduate">Postgraduate</option>
+        </select>
+
+        <button type="submit">Find Schemes</button>
+    </form>
+
+ {% if schemes %}
+        <h2>Recommended Schemes for You:</h2>
+        <ul>
+            {% for scheme in schemes %}
+                <li>
+                    <strong>{{ scheme.name }}</strong><br/>
+                    {{ scheme.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% elif schemes is not none %}
+        <p>No matching schemes found for your details.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

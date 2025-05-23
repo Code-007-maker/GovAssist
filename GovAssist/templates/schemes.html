@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GovAssist - Schemes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .scheme { border: 1px solid #ccc; padding: 16px; margin-bottom: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+<h1>Find Your Suitable Schemes</h1>
+
+<form method="POST">
+    <label>Age: <input type="number" name="age"></label>
+    <label>Income: <input type="number" name="income"></label>
+    <label>Category: 
+        <select name="category">
+            <option value="">Any</option>
+            <option value="Farmer">Farmer</option>
+            <option value="Women">Women</option>
+            <option value="Student">Student</option>
+            <option value="Entrepreneur">Entrepreneur</option>
+        </select>
+    </label>
+    <label>Search: <input type="text" name="search"></label>
+    <button type="submit">Filter</button>
+</form>
+
+<div class="scheme-results">
+  {% for scheme in schemes %}
+      <div class="scheme">
+          <h3>{{ scheme.name }}</h3>
+          <p>{{ scheme.description }}</p>
+          <small>Age: {{ scheme.min_age }}–{{ scheme.max_age }}, Income Limit: ₹{{ scheme.income_limit }}, Category: {{ scheme.category }}</small>
+      </div>
+  {% else %}
+      <p>No schemes match your criteria.</p>
+  {% endfor %}
+</div>
+<a href="/">← Back</a>
+</body>
+</html>

@@ -1,0 +1,128 @@
+/* Base layout */
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #4A90E2, #50E3C2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Login card container */
+form {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  animation: slideFade 0.8s ease;
+}
+
+/* Headline */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: -17px;
+  color: #ffffff;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #dcefff;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  background-color: #e6f0fa;
+  color: #333;
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px #4A90E2;
+}
+
+/* Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #ffffff;
+  color: #4A90E2;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e7bd1;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Sign up link */
+p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #e0f6ff;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+.logo {
+width: 746px;
+    height: 97px;
+    margin-bottom: -29px;
+    border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Optional: stylish shadow */
+}
+
+a:hover {
+  color: #50E3C2;
+}
+
+/* Animation */
+@keyframes slideFade {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

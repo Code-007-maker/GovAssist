@@ -1,0 +1,114 @@
+/* Base page layout */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #4A90E2, #50E3C2);
+  color: #fff;
+  padding: 40px 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Page heading */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+/* Form container */
+form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #e0f6ff;
+}
+
+form input,
+form select {
+  padding: 10px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f8ff;
+  font-size: 1rem;
+  color: #333;
+}
+
+form button {
+  grid-column: 1 / -1;
+  padding: 12px;
+  background-color: #ffffff;
+  color: #4A90E2;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+  background-color: #3e7bd1;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Scheme cards */
+.scheme {
+  background: rgba(255, 255, 255, 0.9);
+  color: #222;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  transition: transform 0.2s ease;
+}
+
+.scheme:hover {
+  transform: translateY(-5px);
+}
+
+.scheme h3 {
+  margin-top: 0;
+  color: #4A90E2;
+}
+
+.scheme p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.scheme small {
+  display: block;
+  margin-top: 10px;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+/* Back link */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 40px;
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #50E3C2;
+}
