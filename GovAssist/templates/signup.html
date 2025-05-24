@@ -15,15 +15,16 @@
 <body>
   <div class="signup-container">
     <h1>Sign Up</h1>
-    <form method="post">
-      <label for="username">Choose Username:</label>
-      <input type="text" name="username" id="username" required />
+<form method="post">
+  <label for="username">Choose Username:</label>
+  <input type="text" name="username" id="username" required />
 
-      <label for="password">Choose Password:</label>
-      <input type="password" name="password" id="password" required />
+  <label for="password">Choose Password:</label>
+  <input type="password" name="password" id="password" required />
 
-      <button type="submit">Sign Up</button>
-    </form>
+  <button type="submit">Sign Up</button>
+</form>
+
     <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
   </div>
 </body>

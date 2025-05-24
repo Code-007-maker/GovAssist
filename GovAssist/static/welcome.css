@@ -1,17 +1,18 @@
-
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh; /* changed from height */
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #4A90E2, #50E3C2);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* changed from center */
   color: #fff;
-  overflow: hidden;
+  overflow-y: auto; /* allow vertical scroll */
   position: relative;
   animation: fadeIn 1.2s ease-in-out;
+  padding: 40px 0; /* add space around top and bottom */
 }
+
 
 .floating-shapes::before,
 .floating-shapes::after {
@@ -107,4 +108,45 @@ a.btn-primary:active {
 @keyframes slideUp {
   from { transform: translateY(40px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.feature-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 15px 20px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.feature-box h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.feature-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #dcefff;
+}
+
+.signup-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.signup-link a:hover {
+  color: #50E3C2;
 }

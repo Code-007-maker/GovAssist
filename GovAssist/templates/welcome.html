@@ -8,10 +8,29 @@
 </head>
 <body>
   <div class="floating-shapes"></div>
+
   <div class="welcome-container">
     <h1>Welcome to <span class="highlight">GovAssist</span></h1>
-    <p>Your gateway to government schemes</p>
+    <p>Your gateway to personalized government scheme recommendations.</p>
+    
+    <div class="features">
+      <div class="feature-box">
+        <h3>🎯 Targeted Schemes</h3>
+        <p>Receive scheme suggestions based on age, income & more.</p>
+      </div>
+      <div class="feature-box">
+        <h3>⚡ Instant Results</h3>
+        <p>Just enter a few details to explore what you're eligible for.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🔒 Secure</h3>
+        <p>Your information is private and encrypted.</p>
+      </div>
+    </div>
+
     <a href="{{ url_for('login') }}" class="btn-primary">Get Started</a>
+    <p class="signup-link">New here? <a href="{{ url_for('signup') }}">Create an account</a></p>
   </div>
 </body>
+
 </html>

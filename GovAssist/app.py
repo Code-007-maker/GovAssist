@@ -1,13 +1,12 @@
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, session, g
+from flask import Flask, render_template, request, redirect, url_for, session, g, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__)   # Only define once
+app = Flask(__name__)
 app.secret_key = "secret123"
 
 DATABASE = "govassist.db"
 
-# --- Database helper functions ---
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
@@ -45,8 +44,6 @@ def init_db():
         ''')
         db.commit()
 
-# --- Routes ---
-
 @app.route("/")
 def welcome():
     return render_template("welcome.html")
@@ -70,8 +67,7 @@ def signup():
         db.commit()
 
         session["username"] = username
-        return redirect(url_for("dashboard"))
-
+        return redirect(url_for("login"))
     return render_template("signup.html")
 
 @app.route("/login", methods=["GET", "POST"])
@@ -87,23 +83,30 @@ def login():
 
         if row and check_password_hash(row["password"], password):
             session["username"] = username
+            flash("Login successful!")
             return redirect(url_for("dashboard"))
 
-        return "Invalid username or password!"
+        flash("Invalid username or password!")
+        return redirect(url_for("login"))
 
     return render_template("login.html")
 
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if "username" not in session:
+        flash("Please login to access dashboard.")
         return redirect(url_for("login"))
 
     schemes = []
     if request.method == "POST":
-        age = int(request.form["age"])
-        occupation = request.form["occupation"]
-        income = int(request.form["income"])
-        education = request.form["education"]
+        try:
+            age = int(request.form["age"])
+            occupation = request.form["occupation"].strip().lower()
+            income = int(request.form["income"])
+            education = request.form["education"].strip().lower()
+        except (ValueError, KeyError):
+            flash("Invalid form input. Please try again.")
+            return redirect(url_for("dashboard"))
 
         user_data = {
             "age": age,
@@ -111,6 +114,7 @@ def dashboard():
             "income": income,
             "education": education
         }
+
         all_schemes = [
             {
                 "name": "Student Scholarship",
@@ -131,6 +135,11 @@ def dashboard():
                 "name": "Worker Insurance",
                 "criteria": lambda u: u["occupation"] == "worker" and u["income"] < 400000,
                 "description": "Insurance schemes for workers with low income."
+            },
+            {
+                "name": "Skill Development",
+                "criteria": lambda u: u["education"] in ["high school", "graduate"] and u["income"] < 600000,
+                "description": "Skill training for youth with basic education."
             }
         ]
 
@@ -141,6 +150,7 @@ def dashboard():
 @app.route("/logout")
 def logout():
     session.pop("username", None)
+    flash("You have been logged out.")
     return redirect(url_for("welcome"))
 
 if __name__ == "__main__":

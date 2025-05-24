@@ -1,124 +1,151 @@
-/* Reset and base styles */
+/* index.css */
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #4A90E2, #50E3C2);
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
-  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url("{{ url_for('static', filename='images/bg.jpg') }}") no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  animation: fadeInBody 1.5s ease-in;
 }
 
 .container {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  max-width: 600px;
-  width: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.8s ease;
 }
 
-/* Header section */
 .header {
   text-align: right;
   margin-bottom: 20px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .header a {
-  color: #ffcccc;
+  color: #c62828;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-.header a:hover {
-  color: #ffffff;
-}
-
-/* Headings */
-h1, h2 {
+h1 {
   text-align: center;
+  font-size: 1.8rem;
   margin-bottom: 25px;
-  color: #ffffff;
+  color: #0d47a1;
 }
 
-/* Form elements */
-form label {
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #dcefff;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-form input,
-form select {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 20px;
-  width: 100%;
-  background-color: #f1f9ff;
-  color: #333;
-  font-size: 1rem;
-  transition: box-shadow 0.3s ease;
-}
-
-form input:focus,
-form select:focus {
-  outline: none;
-  box-shadow: 0 0 6px #50E3C2;
-}
-
-/* Button */
-button[type="submit"] {
-  width: 100%;
-  background-color: #ffffff;
-  color: #4A90E2;
+label {
   font-weight: bold;
-  border: none;
+  margin: 8px 0 4px;
+}
+
+input,
+select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 5px rgba(26, 115, 232, 0.4);
+  outline: none;
+}
+
+button {
+  margin-top: 20px;
   padding: 12px;
-  border-radius: 10px;
-  font-size: 1.1rem;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease;
 }
 
-button[type="submit"]:hover {
-  background-color: #3e7bd1;
-  color: #fff;
-  transform: translateY(-2px);
+button:hover {
+  background: #0c57c1;
 }
 
-/* Scheme results */
 ul {
   list-style: none;
   padding: 0;
+  margin-top: 25px;
 }
 
 li {
-  background-color: #e6f6ff;
-  color: #222;
+  background: #e3f2fd;
   padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  border-left: 5px solid #1e88e5;
+  border-radius: 8px;
+  animation: fadeInList 0.5s ease;
+}
+.background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Puts slideshow behind content */
+  overflow: hidden;
 }
 
-/* No scheme message */
-p {
-  text-align: center;
-  font-size: 1rem;
-  color: #fceeed;
-  margin-top: 30px;
+.bg-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from { opacity: 0.4 }
+  to { opacity: 1 }
+}
+
+/* Logo at top of form */
+.logo {
+display: block;
+    max-width: 1311px;
+    height: 383px;
+    margin: -219px -44px -145px;
+  animation: popIn 1s ease;
 }
 
 /* Animations */
-@keyframes fadeInUp {
+@keyframes fadeInBody {
   from {
-    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
     opacity: 0;
   }
   to {
@@ -127,6 +154,34 @@ p {
   }
 }
 
-.container, form, li {
-  animation: fadeInUp 0.6s ease;
+@keyframes fadeInList {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
 }

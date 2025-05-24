@@ -8,6 +8,43 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
 }
+/* Featured banner */
+.featured-banner {
+  background: #fff;
+  color: #4A90E2;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.featured-banner h2 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.featured-banner p {
+  margin: 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Scheme meta icons */
+.scheme-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.scheme-meta i {
+  margin-right: 6px;
+  color: #4A90E2;
+}
 
 /* Page heading */
 h1 {
